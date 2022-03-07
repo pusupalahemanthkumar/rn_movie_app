@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
     container:{
         width:'100%',
         height:50,
-        marginTop: Platform.OS==='android'? 40 : null,
+        marginTop: Platform.OS==='android'? 25 : null,
         flexDirection:'row',
         justifyContent:'space-between',
         paddingHorizontal:20,

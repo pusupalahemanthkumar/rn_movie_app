@@ -5,16 +5,19 @@ import HeaderTop from "../components/HeaderTop";
 import CustomHeaderTitle from "../components/CustomHeaderTitle";
 import TrendingMoviesCarousel from "../components/Carousel/TrendingMoviesCarousel";
 import MoviesList from "../components/MoviesList/MoviesList";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 const HomeScreen = () => {
   return (
-    <ScrollView>
-      <HeaderTop />
-      <CustomHeaderTitle title="Now Showing" moreText="See More >" />
-      <TrendingMoviesCarousel />
-      <CustomHeaderTitle title="Popular" moreText="See More >"/>
-      <MoviesList />
-      <StatusBar />
+    <ScrollView >
+      <SafeAreaView>
+        <HeaderTop />
+        <CustomHeaderTitle title="Now Showing" moreText="See More >" />
+        <TrendingMoviesCarousel />
+        <CustomHeaderTitle title="Popular" moreText="See More >" />
+        <MoviesList />
+        <StatusBar />
+      </SafeAreaView>
     </ScrollView>
   );
 };
