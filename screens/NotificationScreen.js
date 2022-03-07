@@ -1,14 +1,14 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 
-const WatchListScreen = () => {
+const NotificationScreen = () => {
   return (
     <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-      <Text>WatchListScreen</Text>
+      <Text>NotificationScreen</Text>
     </View>
   )
 }
 
-export default WatchListScreen
+export default NotificationScreen
 
 const styles = StyleSheet.create({})

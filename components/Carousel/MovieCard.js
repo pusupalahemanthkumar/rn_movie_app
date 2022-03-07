@@ -1,27 +1,43 @@
-import { StyleSheet, Text, View,Image } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  Image,
+  TouchableWithoutFeedback,
+} from "react-native";
 import { Entypo } from "@expo/vector-icons";
 import React from "react";
+import { useNavigation } from "@react-navigation/native";
 
-const MovieCard = ({item}) => {
+const MovieCard = ({ item }) => {
+  const navigation = useNavigation();
   return (
-    <View style={styles.cardContainer}>
-      <View style={styles.cardImageContainer}>
-        <Image
-          source={{
-            uri: item.imageUrl,
-          }}
-          resizeMode="stretch"
-          style={styles.image}
-        />
-      </View>
-      <View style={styles.cardContentContainer}>
-        <Text style={styles.cardTitle}>{item.title}</Text>
-        <View style={styles.cardText}>
-          <Entypo name="star" size={18} color="#FFDF00" />
-          <Text style={styles.smtext}>{` ${item.rating} / 10 IMDb`}</Text>
+    <TouchableWithoutFeedback
+      onPress={() => {
+        navigation.navigate("TrendingDetailView", {
+          data: item,
+        });
+      }}
+    >
+      <View style={styles.cardContainer}>
+        <View style={styles.cardImageContainer}>
+          <Image
+            source={{
+              uri: item.imageUrl,
+            }}
+            resizeMode="stretch"
+            style={styles.image}
+          />
+        </View>
+        <View style={styles.cardContentContainer}>
+          <Text style={styles.cardTitle}>{item.title}</Text>
+          <View style={styles.cardText}>
+            <Entypo name="star" size={18} color="#FFDF00" />
+            <Text style={styles.smtext}>{` ${item.rating} / 10 IMDb`}</Text>
+          </View>
         </View>
       </View>
-    </View>
+    </TouchableWithoutFeedback>
   );
 };
 
