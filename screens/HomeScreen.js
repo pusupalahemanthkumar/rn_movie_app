@@ -1,13 +1,13 @@
 import { StyleSheet, Text, View, ScrollView } from "react-native";
 import { StatusBar } from "expo-status-bar";
-import React from "react";
+import React, {useEffect} from "react";
 import HeaderTop from "../components/HeaderTop";
 import CustomHeaderTitle from "../components/CustomHeaderTitle";
 import TrendingMoviesCarousel from "../components/Carousel/TrendingMoviesCarousel";
 import MoviesList from "../components/MoviesList/MoviesList";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-const HomeScreen = () => {
+const HomeScreen = ({navigation}) => {
   return (
     <ScrollView >
       <SafeAreaView>

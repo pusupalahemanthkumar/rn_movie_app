@@ -2,8 +2,6 @@ import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View } from "react-native";
 import MainNavigator from "./Navigation/MainNavigator";
 
-const Tab = createBottomTabNavigator();
-
 export default function App() {
   return (
     <MainNavigator />
