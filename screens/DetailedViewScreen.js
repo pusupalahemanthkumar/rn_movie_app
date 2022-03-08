@@ -1,21 +1,26 @@
-import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
-import { useRoute } from '@react-navigation/native';
-import Details from "../components/DetailComponents/Details"
+import { StyleSheet, Text, View } from "react-native";
+import React, { useCallback } from "react";
+import { useDispatch } from "react-redux";
+
+import { toogleFavorite } from "../store/actions/movies";
+import { useRoute } from "@react-navigation/native";
+import Details from "../components/DetailComponents/Details";
 
 const DetailedViewScreen = () => {
   const route = useRoute();
-  const {data} = route.params;
-  return (
-    // <View style={{flex:1, justifyContent:'center', alignItems:'center'}}>
-    //   <Text>DetailedViewScreen</Text>
-    //   <Text>{data.language}</Text>
-    // </View>
-    
-    <Details  data={data}/>
-  )
-}
+  const { data } = route.params;
+  const dispatch = useDispatch();
 
-export default DetailedViewScreen
+  const toogleFavoriteHandler = useCallback(
+    (id) => {
+      // dispatch(toogleFavorite(data.id))
+      dispatch(toogleFavorite(id));
+    },
+    [dispatch, data]
+  );
+  return <Details data={data} toogleFavoriteHandler={toogleFavoriteHandler} />;
+};
 
-const styles = StyleSheet.create({})
+export default DetailedViewScreen;
+
+const styles = StyleSheet.create({});

@@ -21,13 +21,7 @@ const rendercarauselItem = ({ item }) => {
   return <CastCard item={item} />;
 };
 
-const rendercategoryItem = ({item}) => {
-  return (
-          <Text style={styles.categoryTitle}>{item}</Text>
-  );
-}
-
-const Details = ({data}) => {
+const Details = ({ data, toogleFavoriteHandler }) => {
   const navigation = useNavigation();
   const [detail] = React.useState({
     tableHead: ["Length", "Language", "Rating"],
@@ -40,7 +34,7 @@ const Details = ({data}) => {
           <ImageBackground
             style={styles.image}
             source={{
-               uri : data.imageUrl,
+              uri: data.imageUrl,
             }}
             resizeMode="stretch"
           >
@@ -63,47 +57,43 @@ const Details = ({data}) => {
 
         <View style={styles.titleContainer}>
           <Text style={styles.title}>{data.title}</Text>
-          <Feather name="bookmark" size={24} color="black" />
+          <TouchableOpacity onPress={() => toogleFavoriteHandler(data.id)}>
+            <Feather name="bookmark" size={24} color="black" />
+          </TouchableOpacity>
         </View>
         <View style={styles.ratingText}>
           <Entypo name="star" size={18} color="#FFDF00" />
           <Text style={styles.smtext}> {data.rating} / 10 IMDb</Text>
         </View>
-        
-        <View style={styles.categoryContainer}>
-        {
-          data.category.map(item => {
-          return (<View style={styles.category}>
-            <Text style={styles.categoryTitle}>{item}</Text>
-            </View>);
-        })}
-                   
-        </View>
-        {/* <FlatList
-          style={styles.categoryContainer}
-          data={data.category}
-          renderItem={rendercategoryItem}
-          showsHorizontalScrollIndicator={false}
-          pagingEnabled
-          bounces={false}
-          keyExtractor={(item) => item.id}
-        /> */}
 
+        <View style={styles.categoryContainer}>
+          {data.category.map((item) => {
+            return (
+              <View style={styles.category}>
+                <Text style={styles.categoryTitle}>{item}</Text>
+              </View>
+            );
+          })}
+        </View>
         <Table style={styles.tableContainer}>
-          <Row data={detail.tableHead} textStyle={{ color: "grey" }} />
-          <Rows textStyle={{ fontWeight: "bold" }} data={detail.tableData} />
+          <Row
+            data={detail.tableHead}
+            textStyle={{ color: "grey" }}
+          />
+          <Rows
+            textStyle={{ fontWeight: "bold" }}
+            data={detail.tableData}
+          />
         </Table>
 
         <View style={styles.descriptonContainer}>
           <Text style={styles.title}>Description</Text>
-          <Text style={styles.descriptionText}>
-              {data.description}
-          </Text>
+          <Text style={styles.descriptionText}>{data.description}</Text>
         </View>
 
         <CustomHeaderTitle title="Cast" moreText="See More >" />
 
-        <FlatList 
+        <FlatList
           data={data.cast}
           renderItem={rendercarauselItem}
           horizontal
@@ -164,16 +154,14 @@ const styles = StyleSheet.create({
     fontWeight: "200",
     fontSize: 14,
     paddingTop: 3,
-    paddingBottom:3,
-    
+    paddingBottom: 3,
   },
-  category:{
+  category: {
     backgroundColor: "#ADD8E6",
     marginHorizontal: 5,
     paddingHorizontal: 10,
     borderRadius: 10,
     marginBottom: 4,
-
   },
   categoryContainer: {
     flexDirection: "row",

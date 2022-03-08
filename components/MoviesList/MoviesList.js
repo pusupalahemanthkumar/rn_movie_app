@@ -1,7 +1,9 @@
 import { StyleSheet, FlatList } from "react-native";
 import React, { useEffect, useState } from "react";
 import MovieCard from "./MovieCard";
-import movies from "../../assets/data/movies-data";
+// import movies from "../../assets/data/movies-data";
+
+import { useSelector} from "react-redux";
 
 const data = [
   {
@@ -37,10 +39,10 @@ const rendercarauselItem = ({ item }) => {
   return <MovieCard item={item} />;
 };
 
-const MoviesList = () => {
+const MoviesList = ({moviesList}) => {
   const [data, setData] = useState([]);
   useEffect(() => {
-    setData(movies);
+    setData(moviesList);
   }, []);
   return (
     <FlatList

@@ -1,20 +1,26 @@
-import { StyleSheet, Text, View, Button } from 'react-native'
-import React from 'react'
+import { StyleSheet, Text, View, Button } from "react-native";
+import React, { useEffect } from "react";
 import { useNavigation } from "@react-navigation/native";
+import { useSelector } from "react-redux";
 
 const SavedScreen = () => {
   const navigation = useNavigation();
+
+  const savedList = useSelector((state) => state.movies.savedMovies);
+  useEffect(() => {
+    console.log(savedList);
+  }, []);
+
   return (
-    <View  style={{flex:1, justifyContent:'center', alignItems:'center'}}>
+    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
       <Text>SavedScreen</Text>
-      {/* <Button
-        title="Detailed View"
-        onPress={() => navigation.navigate("SavedDetailView")}
-      /> */}
+      {savedList.map((s) => {
+        return <Text key={s.id}>{s.title}</Text>;
+      })}
     </View>
-  )
-}
+  );
+};
 
-export default SavedScreen
+export default SavedScreen;
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({});
