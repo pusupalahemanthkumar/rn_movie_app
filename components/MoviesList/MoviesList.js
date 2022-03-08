@@ -1,9 +1,7 @@
-import {
-  StyleSheet,
-  FlatList,
-} from "react-native";
-import React from "react";
+import { StyleSheet, FlatList } from "react-native";
+import React, { useEffect, useState } from "react";
 import MovieCard from "./MovieCard";
+import movies from "../../assets/data/movies-data";
 
 const data = [
   {
@@ -36,12 +34,14 @@ const data = [
 ];
 
 const rendercarauselItem = ({ item }) => {
-  return (
-      <MovieCard  item ={item}/>
-  );
+  return <MovieCard item={item} />;
 };
 
 const MoviesList = () => {
+  const [data, setData] = useState([]);
+  useEffect(() => {
+    setData(movies);
+  }, []);
   return (
     <FlatList
       data={data}
@@ -56,6 +56,4 @@ const MoviesList = () => {
 
 export default MoviesList;
 
-const styles = StyleSheet.create({
-  
-});
+const styles = StyleSheet.create({});
