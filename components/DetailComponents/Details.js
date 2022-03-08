@@ -17,47 +17,21 @@ import { Entypo } from "@expo/vector-icons";
 import { Ionicons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 
-data = [
-  {
-    id: "1",
-    imageUrl:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQvS4v-9xFvuhZNZ-OLFVI8SBKYlKGCCBmJZw&usqp=CAU",
-    name: "Tom Holland",
-  },
-  {
-    id: "2",
-    imageUrl:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ7Oz2QxWdkn_1oWf4a9-ZPg1gVHbk4KocB6UYu4UIxlyrw4J9fl4CL9N4D3hQwqOgHGKY&usqp=CAU",
-    name: "Zendaya",
-  },
-  {
-    id: "3",
-    imageUrl:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRaanh6STVkzi_E2pV-7zQD9Nk7cJrbzwUhoA&usqp=CAU",
-    name: "Benedict Cumberbatch",
-  },
-  {
-    id: "4",
-    imageUrl:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQll1xC4oyI7NckF_sUlLMSv0mtmIuyvFnYnA&usqp=CAU",
-    name: "Marisa Tomei",
-  },
-  {
-    id: "5",
-    imageUrl:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQt5Wyap9hGDwKR5vHxwClw-RTaiu9g-G0G4w&usqp=CAU",
-    name: "Jon Favreau",
-  },
-];
 const rendercarauselItem = ({ item }) => {
   return <CastCard item={item} />;
 };
 
-const Details = () => {
+const rendercategoryItem = ({item}) => {
+  return (
+          <Text style={styles.categoryTitle}>{item}</Text>
+  );
+}
+
+const Details = ({data}) => {
   const navigation = useNavigation();
   const [detail] = React.useState({
     tableHead: ["Length", "Language", "Rating"],
-    tableData: [["2hr 40 min", "English", "PG-13"]],
+    tableData: [[data.duration, data.language, data.ratingIssuer]],
   });
   return (
     <ScrollView>
@@ -66,7 +40,7 @@ const Details = () => {
           <ImageBackground
             style={styles.image}
             source={{
-              uri: "https://terrigen-cdn-dev.marvel.com/content/prod/1x/sffh_london-high-res.jpg",
+               uri : data.imageUrl,
             }}
             resizeMode="stretch"
           >
@@ -81,38 +55,39 @@ const Details = () => {
                   navigation.goBack();
                 }}
               >
-                <Ionicons name="arrow-back" size={40} color="#f4f4f4" />
+                <Ionicons name="arrow-back" size={35} color="#f4f4f4" />
               </TouchableOpacity>
             </View>
           </ImageBackground>
         </View>
 
         <View style={styles.titleContainer}>
-          <Text style={styles.title}>Spider Man : No Way Home</Text>
+          <Text style={styles.title}>{data.title}</Text>
           <Feather name="bookmark" size={24} color="black" />
         </View>
         <View style={styles.ratingText}>
           <Entypo name="star" size={18} color="#FFDF00" />
-          <Text style={styles.smtext}> 8 / 10 IMDb</Text>
+          <Text style={styles.smtext}> {data.rating} / 10 IMDb</Text>
         </View>
-
+        
         <View style={styles.categoryContainer}>
-          <View key="1" style={styles.category}>
-            <Text style={styles.categoryTitle}>Action</Text>
-          </View>
-          <View key="2" style={styles.category}>
-            <Text style={styles.categoryTitle}>Featured</Text>
-          </View>
-          <View key="3" style={styles.category}>
-            <Text style={styles.categoryTitle}>Popular</Text>
-          </View>
-          <View key="4" style={styles.category}>
-            <Text style={styles.categoryTitle}>Animation</Text>
-          </View>
-          <View key="5" style={styles.category}>
-            <Text style={styles.categoryTitle}>Thriller</Text>
-          </View>
+        {
+          data.category.map(item => {
+          return (<View style={styles.category}>
+            <Text style={styles.categoryTitle}>{item}</Text>
+            </View>);
+        })}
+                   
         </View>
+        {/* <FlatList
+          style={styles.categoryContainer}
+          data={data.category}
+          renderItem={rendercategoryItem}
+          showsHorizontalScrollIndicator={false}
+          pagingEnabled
+          bounces={false}
+          keyExtractor={(item) => item.id}
+        /> */}
 
         <Table style={styles.tableContainer}>
           <Row data={detail.tableHead} textStyle={{ color: "grey" }} />
@@ -122,19 +97,14 @@ const Details = () => {
         <View style={styles.descriptonContainer}>
           <Text style={styles.title}>Description</Text>
           <Text style={styles.descriptionText}>
-            With Spider-Man's identity now revealed,our friendly neighborhood
-            web-slinger is unmasked and no longer able to separate his normal
-            life as Peter Parker from the high stakes of being a superhero. When
-            Peter asks for help from Doctor Strange, the stakes become even more
-            dangerous, forcing him to discover what it truly means to be
-            Spider-Man.
+              {data.description}
           </Text>
         </View>
 
         <CustomHeaderTitle title="Cast" moreText="See More >" />
 
-        <FlatList
-          data={data}
+        <FlatList 
+          data={data.cast}
           renderItem={rendercarauselItem}
           horizontal
           showsHorizontalScrollIndicator={false}
@@ -164,7 +134,6 @@ const styles = StyleSheet.create({
     borderTopLeftRadius: 30,
     borderTopRightRadius: 30,
     borderWidth: 2,
-    marginBottom: 10,
   },
   title: {
     fontWeight: "bold",
@@ -194,8 +163,17 @@ const styles = StyleSheet.create({
     color: "grey",
     fontWeight: "200",
     fontSize: 14,
-    paddingTop: 2,
-    paddingBottom: 4,
+    paddingTop: 3,
+    paddingBottom:3,
+    
+  },
+  category:{
+    backgroundColor: "#ADD8E6",
+    marginHorizontal: 5,
+    paddingHorizontal: 10,
+    borderRadius: 10,
+    marginBottom: 4,
+
   },
   categoryContainer: {
     flexDirection: "row",
@@ -205,13 +183,6 @@ const styles = StyleSheet.create({
     paddingLeft: 15,
     paddingRight: 15,
     marginBottom: 5,
-  },
-  category: {
-    backgroundColor: "#ADD8E6",
-    marginHorizontal: 5,
-    paddingHorizontal: 10,
-    borderRadius: 10,
-    marginBottom: 4,
   },
 
   tableContainer: {
