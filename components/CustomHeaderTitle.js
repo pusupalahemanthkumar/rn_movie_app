@@ -25,8 +25,8 @@ const styles = StyleSheet.create({
         alignItems:'center'
     },
     title:{
-        fontSize:14,
-        fontWeight:'500',
+        fontSize:22,
+        fontWeight:'bold',
     },
     btnContainer:{
         paddingHorizontal:15,

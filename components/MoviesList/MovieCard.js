@@ -47,7 +47,7 @@ const MovieCard = ({item}) => {
             })}
           </ScrollView>
           <View style={styles.cardText}>
-            <Ionicons name="time-outline" size={20} color="grey" />
+            <Ionicons name="time-outline" size={18} color="grey" />
             <Text style={styles.smtext}>{item.duration}</Text>
           </View>
         </View>
