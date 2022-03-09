@@ -196,7 +196,7 @@ export default [
     rating: "8.7",
     category: ["MYSTERY", "THRILLER"],
     description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-    langugage: "English",
+    language: "English",
     ratingIssuer: "PG-13",
     cast: [
       {
@@ -246,7 +246,7 @@ export default [
     rating: "8.7",
     category: ["MYSTERY", "THRILLER"],
     description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-    langugage: "English",
+    language: "English",
     ratingIssuer: "PG-13",
     cast: [
       {
@@ -296,7 +296,7 @@ export default [
     rating: "8.7",
     category: ["MYSTERY", "THRILLER"],
     description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-    langugage: "English",
+    language: "English",
     ratingIssuer: "PG-13",
     cast: [
       {
@@ -336,49 +336,5 @@ export default [
         name: "Jon Favreau",
       },
     ],
-  },
-  {
-    id: "8",
-    title: "Venom Let There Be Carnage",
-    imageUrl:
-      "https://www.awn.com/sites/default/files/styles/original/public/image/attached/1055429-newposterresized.jpg?itok=ZnKDv33F",
-    duration: "1H 47M",
-    rating: "8.7",
-    category: ["HORROR", "MYSTERY", "THRILLER"],
-    description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-    langugage: "English",
-    ratingIssuer: "PG-13",
-    cast: [
-      {
-        id: "1",
-        imageUrl:
-          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQvS4v-9xFvuhZNZ-OLFVI8SBKYlKGCCBmJZw&usqp=CAU",
-        name: "Tom Holland",
-      },
-      {
-        id: "2",
-        imageUrl:
-          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ7Oz2QxWdkn_1oWf4a9-ZPg1gVHbk4KocB6UYu4UIxlyrw4J9fl4CL9N4D3hQwqOgHGKY&usqp=CAU",
-        name: "Zendaya",
-      },
-      {
-        id: "3",
-        imageUrl:
-          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRaanh6STVkzi_E2pV-7zQD9Nk7cJrbzwUhoA&usqp=CAU",
-        name: "Benedict Cumberbatch",
-      },
-      {
-        id: "4",
-        imageUrl:
-          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQll1xC4oyI7NckF_sUlLMSv0mtmIuyvFnYnA&usqp=CAU",
-        name: "Marisa Tomei",
-      },
-      {
-        id: "5",
-        imageUrl:
-          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQt5Wyap9hGDwKR5vHxwClw-RTaiu9g-G0G4w&usqp=CAU",
-        name: "Jon Favreau",
-      },
-    ],
-  },
+  }
 ];
