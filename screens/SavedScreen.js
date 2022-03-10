@@ -1,26 +1,45 @@
 import { StyleSheet, Text, View, ScrollView, SafeAreaView } from "react-native";
-import React, { useEffect } from "react";
-import { useNavigation } from "@react-navigation/native";
+import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import MoviesCard from "../components/MoviesList/MovieCard";
 import SearchComponent from "../components/SearchComponent";
 import HeaderTop from "../components/HeaderTop";
+import MoviesList from "../components/MoviesList/MoviesList";
 
 const SavedScreen = () => {
-  const navigation = useNavigation();
+  const savedList = useSelector((state) => state.movies.savedMoviesList);
 
-  let savedList = useSelector((state) => state.movies.savedMoviesList);
+  const [searchkey, setSearchKey] = useState("");
+  const [movies, setMovies] = useState(savedList);
+
+  useEffect(() => {
+    setMovies(savedList);
+  }, []);
+
+  const searchkeyChangeHandler = (value) => {
+    setSearchKey(value);
+    const pattern = new RegExp(value.toLowerCase());
+    const d = [...savedList];
+    const filteredMoviesList = d.filter((m) => {
+      return pattern.test(m.title.toLowerCase());
+    });
+    console.log(filteredMoviesList.length);
+    setMovies(filteredMoviesList);
+  };
 
   return (
     <View>
       <HeaderTop />
-      <SearchComponent />
+      <SearchComponent
+        searchkeyChangeHandler={searchkeyChangeHandler}
+        searchkey={searchkey}
+      />
       <ScrollView>
-        <SafeAreaView>
+        {/* <SafeAreaView>
           {savedList.map((s) => {
             return <MoviesCard item={s} />;
           })}
-        </SafeAreaView>
+        </SafeAreaView> */}
+        <MoviesList movies={movies} />
       </ScrollView>
     </View>
   );
