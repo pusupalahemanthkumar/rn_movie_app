@@ -17,19 +17,6 @@ const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
 const Tab = createBottomTabNavigator();
 
-// All Movies Stack Nav
-const StackAllMovies = () => {
-  return (
-    <Stack.Navigator
-      screenOptions={{
-        headerShown: false,
-      }}
-    >
-      <Stack.Screen name="AllMoviesScreen" component={AllMoviesListScreen} />
-      <Stack.Screen name="AllMoviesDetailView" component={DetailedViewScreen} />
-    </Stack.Navigator>
-  );
-};
 // Trending Stack Nav
 const StackNavTrending = () => {
   return (
@@ -53,7 +40,6 @@ const DrawerMoviesNav = () => {
       }}
     >
       <Drawer.Screen name="Trending" component={StackNavTrending} />
-      <Drawer.Screen name="AllMovies" component={StackAllMovies} />
       <Drawer.Screen name="WatchList" component={WatchListScreen} />
     </Drawer.Navigator>
   );

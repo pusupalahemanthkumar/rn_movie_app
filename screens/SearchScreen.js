@@ -32,7 +32,7 @@ const SearchScreen = () => {
         searchkeyChangeHandler={searchkeyChangeHandler}
         searchkey={searchkey}
       />
-      <MoviesList movies={movies} />
+      <MoviesList movies={movies} viewMoreScreen="SearchDetailView" />
     </>
   );
 };

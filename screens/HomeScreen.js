@@ -18,7 +18,7 @@ const HomeScreen = () => {
           <CustomHeaderTitle title="Now Showing" moreText="See More >" />
           <TrendingMoviesCarousel moviesList={moviesList} />
           <CustomHeaderTitle title="Popular" moreText="See More >" />
-          <MoviesList movies={moviesList} />
+          <MoviesList movies={moviesList} viewMoreScreen="TrendingDetailView" />
           <StatusBar />
         </SafeAreaView>
       </ScrollView>

@@ -11,12 +11,12 @@ import { Entypo } from "@expo/vector-icons";
 import { Ionicons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 
-const MovieCard = ({item}) => {
+const MovieCard = ({ item, viewMoreScreen }) => {
   const navigation = useNavigation();
   return (
     <TouchableWithoutFeedback
       onPress={() => {
-        navigation.navigate("TrendingDetailView", {
+        navigation.navigate(viewMoreScreen, {
           data: item,
         });
       }}

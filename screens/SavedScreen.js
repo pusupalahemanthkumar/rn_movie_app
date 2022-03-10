@@ -33,7 +33,7 @@ const SavedScreen = () => {
         searchkeyChangeHandler={searchkeyChangeHandler}
         searchkey={searchkey}
       />
-      <MoviesList movies={movies} />
+      <MoviesList movies={movies}  viewMoreScreen="SavedDetailView"/>
     </>
   );
 };
