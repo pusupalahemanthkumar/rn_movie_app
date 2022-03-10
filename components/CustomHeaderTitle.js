@@ -25,13 +25,13 @@ const styles = StyleSheet.create({
         alignItems:'center'
     },
     title:{
-        fontSize:22,
+        fontSize:16,
         fontWeight:'bold',
     },
     btnContainer:{
         paddingHorizontal:15,
         paddingVertical:5,
-        // backgroundColor:'#DCDCDC',
+        backgroundColor:'#DCDCDC',
         borderRadius:10,
         borderColor:'grey',
         borderWidth:1,

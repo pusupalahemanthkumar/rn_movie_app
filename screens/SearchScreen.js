@@ -1,22 +1,42 @@
-import { StyleSheet, Text, View , Button} from 'react-native'
-import React from 'react'
-import { useNavigation } from "@react-navigation/native";
-import SearchComponent from '../components/SearchComponent';
+import { StyleSheet, Text, View, Button } from "react-native";
+import React, { useEffect, useState } from "react";
+import SearchComponent from "../components/SearchComponent";
+import HeaderTop from "../components/HeaderTop";
+import { useSelector } from "react-redux";
+import MoviesList from "../components/MoviesList/MoviesList";
 
 const SearchScreen = () => {
-  const navigation = useNavigation();
+  const moviesList = useSelector((state) => state.movies.moviesList);
+  const [searchkey, setSearchKey] = useState("");
+  const [movies, setMovies] = useState(moviesList);
+
+  useEffect(() => {
+    setMovies(moviesList);
+  }, []);
+
+  const searchkeyChangeHandler = (value) => {
+    setSearchKey(value);
+    const pattern = new RegExp(value.toLowerCase());
+    const d = [...moviesList];
+    const filteredMoviesList = d.filter((m) => {
+      return pattern.test(m.title.toLowerCase());
+    });
+    console.log(filteredMoviesList.length);
+    setMovies(filteredMoviesList);
+  };
+
   return (
-    <SearchComponent/>
-    // <View  style={{flex:1, justifyContent:'center', alignItems:'center'}}>
-    //   <Text>SearchScreen</Text>
-    //   {/* <Button
-    //     title="Detailed View"
-    //     onPress={() => navigation.navigate("SearchDetailView")}
-    //   /> */}
-    // </View>
-  )
-}
+    <>
+      <HeaderTop />
+      <SearchComponent
+        searchkeyChangeHandler={searchkeyChangeHandler}
+        searchkey={searchkey}
+      />
+      <MoviesList movies={movies} />
+    </>
+  );
+};
 
-export default SearchScreen
+export default SearchScreen;
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({});

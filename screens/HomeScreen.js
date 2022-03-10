@@ -11,18 +11,17 @@ import MoviesList from "../components/MoviesList/MoviesList";
 import { useNavigation } from "@react-navigation/native";
 
 const HomeScreen = () => {
-
-  const moviesList= useSelector(state=> state.movies.moviesList);
+  const moviesList = useSelector((state) => state.movies.moviesList);
   const navigation = useNavigation();
   return (
     <View>
-      <HeaderTop/>
+      <HeaderTop moviesScreen={true} />
       <ScrollView>
         <SafeAreaView>
           <CustomHeaderTitle title="Now Showing" moreText="See More >" />
           <TrendingMoviesCarousel moviesList={moviesList} />
           <CustomHeaderTitle title="Popular" moreText="See More >" />
-          <MoviesList  moviesList={moviesList}  />
+          <MoviesList movies={moviesList} />
           <StatusBar />
         </SafeAreaView>
       </ScrollView>

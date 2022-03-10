@@ -10,19 +10,32 @@ import { useNavigation } from "@react-navigation/native";
 import React from "react";
 import { Feather } from "@expo/vector-icons";
 
-const HeaderTop = () => {
+const HeaderTop = (props) => {
   const navigation = useNavigation();
   return (
     <View style={styles.container}>
-      <TouchableOpacity
-        onPress={() => {
-          navigation.openDrawer();
+      {props.moviesScreen ? (
+        <TouchableOpacity
+          onPress={() => {
+            navigation.openDrawer();
+          }}
+        >
+          <Feather name="menu" size={24} color="black" />
+        </TouchableOpacity>
+      ) : null}
+
+      <View
+        style={{
+          flex:4,
+          justifyContent:'center',
+          alignItems:'center'
         }}
       >
-        <Feather name="menu" size={24} color="black" />
-      </TouchableOpacity>
-      <Text style={styles.title}>Movie App</Text>
-      <Feather name="bell" size={24} color="black" />
+        <Text style={styles.title}>Movie App</Text>
+      </View>
+      <View>
+        <Feather name="bell" size={24} color="black" />
+      </View>
     </View>
   );
 };
@@ -38,9 +51,11 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     paddingHorizontal: 20,
     paddingVertical: 10,
+    borderBottomColor:'#ddd',
+    borderBottomWidth:1,
   },
   title: {
-    fontWeight: "500",
+    fontWeight: "bold",
     fontSize: 16,
   },
 });

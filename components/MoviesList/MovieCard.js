@@ -81,7 +81,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
   },
   title: {
-    fontSize: 15,
+    fontSize: 14,
     fontWeight: "500",
   },
   cardText: {

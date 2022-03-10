@@ -1,24 +1,17 @@
 import { StyleSheet, FlatList } from "react-native";
-import React, { useEffect, useState } from "react";
-import MovieCard from "./MovieCard";
-
-import { useSelector } from "react-redux";
+import React from "react";
+import CastCard from "./CastCard";
 
 const rendercarauselItem = ({ item }) => {
-  return <MovieCard item={item} />;
+  return <CastCard item={item} />;
 };
 
-const MoviesList = ({ movies }) => {
-
-  const [data, setData] = useState([]);
-  useEffect(() => {
-    setData(movies);
-  }, []);
-
+const CastCardList = ({ cast }) => {
   return (
     <FlatList
-      data={data}
+      data={cast}
       renderItem={rendercarauselItem}
+      horizontal
       showsHorizontalScrollIndicator={false}
       pagingEnabled
       bounces={false}
@@ -27,6 +20,6 @@ const MoviesList = ({ movies }) => {
   );
 };
 
-export default MoviesList;
+export default CastCardList;
 
 const styles = StyleSheet.create({});

@@ -60,7 +60,7 @@ const styles = StyleSheet.create({
   },
   cardContentContainer: {},
   cardTitle: {
-    fontSize: 15,
+    fontSize: 14,
     fontWeight: "500",
   },
   cardText: {
@@ -69,6 +69,6 @@ const styles = StyleSheet.create({
   },
   smtext: {
     color: "grey",
-    fontSize: 12,
+    fontSize: 11,
   },
 });
