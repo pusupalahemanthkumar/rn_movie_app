@@ -2,7 +2,7 @@ import { StyleSheet, Text, View } from "react-native";
 import React, { useCallback } from "react";
 import { useDispatch } from "react-redux";
 
-import { toogleFavorite } from "../store/actions/movies";
+import { toogleFavorite } from "../app/reducersAndActions/moviesReducer";
 import { useRoute } from "@react-navigation/native";
 import Details from "../components/DetailComponents/Details";
 

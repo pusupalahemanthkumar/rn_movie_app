@@ -6,10 +6,8 @@ import { useSelector } from "react-redux";
 const SavedScreen = () => {
   const navigation = useNavigation();
 
-  const savedList = useSelector((state) => state.movies.savedMovies);
-  useEffect(() => {
-    console.log(savedList);
-  }, []);
+  let savedList = useSelector((state) => state.movies.savedMoviesList);
+  console.log("test" + savedList);
 
   return (
     <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>

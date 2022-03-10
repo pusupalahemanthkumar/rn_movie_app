@@ -12,7 +12,7 @@ import { useNavigation } from "@react-navigation/native";
 
 const HomeScreen = () => {
 
-  const moviesList= useSelector(state=> state.movies.movies);
+  const moviesList= useSelector(state=> state.movies.moviesList);
   const navigation = useNavigation();
   return (
     <ScrollView>
