@@ -1,4 +1,5 @@
 import { StyleSheet, Text, View, ScrollView, SafeAreaView } from "react-native";
+import { StatusBar } from "expo-status-bar";
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import SearchComponent from "../components/SearchComponent";
@@ -34,6 +35,7 @@ const SavedScreen = () => {
         searchkey={searchkey}
       />
       <MoviesList movies={movies}  viewMoreScreen="SavedDetailView"/>
+      <StatusBar />
     </>
   );
 };

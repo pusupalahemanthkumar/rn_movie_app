@@ -1,4 +1,5 @@
 import { StyleSheet, Text, View, Button } from "react-native";
+import { StatusBar } from "expo-status-bar";
 import React, { useEffect, useState } from "react";
 import SearchComponent from "../components/SearchComponent";
 import HeaderTop from "../components/HeaderTop";
@@ -33,6 +34,7 @@ const SearchScreen = () => {
         searchkey={searchkey}
       />
       <MoviesList movies={movies} viewMoreScreen="SearchDetailView" />
+      <StatusBar />
     </>
   );
 };

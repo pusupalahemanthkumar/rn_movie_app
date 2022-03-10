@@ -1,4 +1,5 @@
 import { StyleSheet, Text, View } from "react-native";
+import { StatusBar } from "expo-status-bar";
 import React, { useCallback } from "react";
 import { useDispatch } from "react-redux";
 
@@ -18,7 +19,13 @@ const DetailedViewScreen = () => {
     },
     [dispatch, data]
   );
-  return <Details data={data} toogleFavoriteHandler={toogleFavoriteHandler} />;
+  return(
+    <>
+    <Details data={data} toogleFavoriteHandler={toogleFavoriteHandler} />
+    <StatusBar />
+   </>
+  );
+  
 };
 
 export default DetailedViewScreen;

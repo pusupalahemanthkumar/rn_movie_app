@@ -1,5 +1,6 @@
 import { StyleSheet, Text, View } from "react-native";
 import React from "react";
+import { StatusBar } from "expo-status-bar";
 import HeaderTop from "../components/HeaderTop";
 
 const WatchListScreen = () => {
@@ -9,6 +10,7 @@ const WatchListScreen = () => {
       <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
         <Text>WatchListScreen</Text>
       </View>
+      <StatusBar />
     </>
   );
 };
