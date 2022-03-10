@@ -13,7 +13,7 @@ const SavedScreen = () => {
 
   useEffect(() => {
     setMovies(savedList);
-  }, []);
+  }, [savedList]);
 
   const searchkeyChangeHandler = (value) => {
     setSearchKey(value);
@@ -27,21 +27,14 @@ const SavedScreen = () => {
   };
 
   return (
-    <View>
+    <>
       <HeaderTop />
       <SearchComponent
         searchkeyChangeHandler={searchkeyChangeHandler}
         searchkey={searchkey}
       />
-      <ScrollView>
-        {/* <SafeAreaView>
-          {savedList.map((s) => {
-            return <MoviesCard item={s} />;
-          })}
-        </SafeAreaView> */}
-        <MoviesList movies={movies} />
-      </ScrollView>
-    </View>
+      <MoviesList movies={movies} />
+    </>
   );
 };
 

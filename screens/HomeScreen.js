@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, ScrollView, SafeAreaView } from "react-native";
+import { StyleSheet, ScrollView, SafeAreaView } from "react-native";
 import { StatusBar } from "expo-status-bar";
 import React from "react";
 import { useSelector } from "react-redux";
@@ -8,13 +8,10 @@ import CustomHeaderTitle from "../components/CustomHeaderTitle";
 import TrendingMoviesCarousel from "../components/Carousel/TrendingMoviesCarousel";
 import MoviesList from "../components/MoviesList/MoviesList";
 
-import { useNavigation } from "@react-navigation/native";
-
 const HomeScreen = () => {
   const moviesList = useSelector((state) => state.movies.moviesList);
-  const navigation = useNavigation();
   return (
-    <View>
+    <>
       <HeaderTop moviesScreen={true} />
       <ScrollView>
         <SafeAreaView>
@@ -25,7 +22,7 @@ const HomeScreen = () => {
           <StatusBar />
         </SafeAreaView>
       </ScrollView>
-    </View>
+    </>
   );
 };
 
