@@ -26,15 +26,21 @@ const HeaderTop = (props) => {
 
       <View
         style={{
-          flex:4,
-          justifyContent:'center',
-          alignItems:'center'
+          flex: 4,
+          justifyContent: "center",
+          alignItems: "center",
         }}
       >
         <Text style={styles.title}>Movie App</Text>
       </View>
       <View>
-        <Feather name="bell" size={24} color="black" />
+        <TouchableOpacity
+          onPress={() => {
+            navigation.navigate("Notification");
+          }}
+        >
+          <Feather name="bell" size={24} color="black" />
+        </TouchableOpacity>
       </View>
     </View>
   );
@@ -51,8 +57,8 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     paddingHorizontal: 20,
     paddingVertical: 10,
-    borderBottomColor:'#ddd',
-    borderBottomWidth:1,
+    borderBottomColor: "#ddd",
+    borderBottomWidth: 1,
   },
   title: {
     fontWeight: "bold",
