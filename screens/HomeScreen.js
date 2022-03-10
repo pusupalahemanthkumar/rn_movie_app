@@ -15,16 +15,18 @@ const HomeScreen = () => {
   const moviesList= useSelector(state=> state.movies.movies);
   const navigation = useNavigation();
   return (
-    <ScrollView>
-      <SafeAreaView>
-        <HeaderTop />
-        <CustomHeaderTitle title="Now Showing" moreText="See More >" />
-        <TrendingMoviesCarousel moviesList={moviesList} />
-        <CustomHeaderTitle title="Popular" moreText="See More >" />
-        <MoviesList  moviesList={moviesList}  />
-        <StatusBar />
-      </SafeAreaView>
-    </ScrollView>
+    <View>
+      <HeaderTop/>
+      <ScrollView>
+        <SafeAreaView>
+          <CustomHeaderTitle title="Now Showing" moreText="See More >" />
+          <TrendingMoviesCarousel moviesList={moviesList} />
+          <CustomHeaderTitle title="Popular" moreText="See More >" />
+          <MoviesList  moviesList={moviesList}  />
+          <StatusBar />
+        </SafeAreaView>
+      </ScrollView>
+    </View>
   );
 };
 
