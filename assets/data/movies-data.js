@@ -89,7 +89,7 @@ export default [
   },
   {
     id: "3",
-    title: "Spider Far Form Home",
+    title: "Spider Man Far Form Home",
     imageUrl:
       "https://terrigen-cdn-dev.marvel.com/content/prod/1x/sffh_london-high-res.jpg",
     duration: "1H 47M",

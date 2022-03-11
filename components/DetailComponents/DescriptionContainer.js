@@ -23,4 +23,8 @@ const styles = StyleSheet.create({
     color: "grey",
     textAlign: "justify",
   },
+  title:{
+    fontWeight: "bold",
+    fontSize: 16,
+  }
 });
