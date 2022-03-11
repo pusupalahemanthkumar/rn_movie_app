@@ -3,12 +3,13 @@ import {
   StyleSheet,
   Text,
   View,
+  Button,
   ScrollView,
   TouchableOpacity,
 } from "react-native";
 import { Table, Row, Rows } from "react-native-table-component";
 import CustomHeaderTitle from "../CustomHeaderTitle";
-import { Entypo } from "@expo/vector-icons";
+import { Feather,Entypo,Ionicons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import { useSelector } from "react-redux";
 import CastCardList from "./CastCardList";
@@ -41,6 +42,10 @@ const Details = ({ data, toogleFavoriteHandler }) => {
     await toogleFavoriteHandler(data.id);
   };
 
+  const watchListHandler = async () =>{
+
+  }
+
   const goBackHandler = () => {
     navigation.goBack();
   };
@@ -55,7 +60,7 @@ const Details = ({ data, toogleFavoriteHandler }) => {
         <View style={styles.titleContainer}>
           <Text style={styles.title}>{data.title}</Text>
           <TouchableOpacity onPress={bookmarkClickHandler}>
-            <Entypo name="bookmark" size={24} color={color} />
+            <Ionicons name="bookmark" size={24} color={color} />
           </TouchableOpacity>
         </View>
         <View style={styles.ratingText}>
@@ -70,6 +75,10 @@ const Details = ({ data, toogleFavoriteHandler }) => {
         <DescriptionContainer description={data.description} />
         <CustomHeaderTitle title="Cast" moreText="See More >" />
         <CastCardList cast={data.cast} />
+        <View style={styles.btnContainer}>
+          <Button onPress={watchListHandler} title="Add to Watchlist"/>
+        </View>
+
       </View>
     </ScrollView>
   );
@@ -82,7 +91,7 @@ const styles = StyleSheet.create({
   },
   title: {
     fontWeight: "bold",
-    fontSize: 16,
+    fontSize: 20,
   },
   titleContainer: {
     paddingLeft: 15,
@@ -103,11 +112,14 @@ const styles = StyleSheet.create({
     color: "grey",
     fontSize: 12,
   },
-
   tableContainer: {
     marginTop: 10,
     paddingLeft: 15,
     paddingRight: 15,
+  },
+  btnContainer:{
+    marginTop: 10,
+    alignItems:"center",
   },
 });
 
