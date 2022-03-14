@@ -9,7 +9,7 @@ const WatchListSummary = ({ total, pending }) => {
       <View style={styles.summaryTop}>
         <LinearGradient
           style={styles.totalBox}
-          colors={["#FF9997", "#FF8986", "#FF7974", "#FF6962"]}
+          colors={["#55D0FF", "#00ACDF", "#0080BF"]}
         >
           <Text style={styles.lText}>{total}</Text>
           <Text style={styles.smText}>Total</Text>
@@ -25,7 +25,7 @@ const WatchListSummary = ({ total, pending }) => {
           <Text style={styles.smText}>Watched</Text>
         </LinearGradient>
         <LinearGradient
-          colors={["#55D0FF", "#00ACDF", "#0080BF"]}
+          colors={["#6FDFE4","#50C8CC", "#35A4A7"]}
           style={[styles.box, styles.pendingContainer]}
         >
           <Text style={styles.lText}>{pending}</Text>
@@ -41,13 +41,13 @@ export default WatchListSummary;
 const styles = StyleSheet.create({
   summaryTop: {
     paddingHorizontal: 15,
-    marginTop: 15,
+    marginTop: 20,
   },
   totalBox: {
     justifyContent: "center",
     alignItems: "center",
     width: width - 30,
-    height: 100,
+    height: 90,
     borderColor: "#ddd",
     borderWidth: 1,
     borderRadius: 10,
@@ -63,7 +63,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     width: width / 2 - 20,
-    height: width / 2 - 20,
+    height: width / 2 - 25,
     borderColor: "#ddd",
     borderWidth: 1,
     borderRadius: 10,
@@ -71,10 +71,10 @@ const styles = StyleSheet.create({
   lText: {
     fontSize: 35,
     fontWeight: "bold",
-    color: "#ccc",
+    color: "#DBE8EA",
   },
   smText: {
-    color: "#ccc",
+    color:"#DBE8EA", 
     fontSize: 15,
   },
 });
