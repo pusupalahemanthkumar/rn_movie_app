@@ -19,21 +19,17 @@ const DashBoardScreen = () => {
       <ScrollView>
         <WatchListSummary total={20} pending={10} />
         <View style={styles.internalNavContainer}>
-          <View style={[styles.navBtn]}>
-            <TouchableOpacity onPress={() => {}}>
+            <TouchableOpacity style={[styles.navBtn]} onPress={() => {}}>
               <Text style={[styles.text]}>All</Text>
             </TouchableOpacity>
-          </View>
-          <View style={[styles.navBtn, styles.active]}>
-            <TouchableOpacity onPress={() => {}}>
+          
+            <TouchableOpacity style={[styles.navBtn, styles.active]} onPress={() => {}}>
               <Text style={[styles.text, styles.activeText]}>Watched</Text>
             </TouchableOpacity>
-          </View>
-          <View style={[styles.navBtn]}>
-            <TouchableOpacity onPress={() => {}}>
+        
+            <TouchableOpacity style={[styles.navBtn]} onPress={() => {}}>
               <Text style={[styles.text]}>Pending</Text>
             </TouchableOpacity>
-          </View>
         </View>
         <WatchList data={moviesList} />
       </ScrollView>
@@ -46,7 +42,7 @@ export default DashBoardScreen;
 const styles = StyleSheet.create({
   internalNavContainer: {
     flexDirection: "row",
-    marginTop: 20,
+    marginTop: 5,
     marginHorizontal: 20,
     borderRadius: 10,
     borderColor: "grey",
@@ -61,14 +57,18 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     borderRadius: 10,
+    
   },
   active: {
-    backgroundColor: "#0080BF",
+    backgroundColor: "grey"
+    // "black"
+    // "#0080BF",
   },
   activeText: {
-    color: "#fff",
+    color: "#ffffff",
   },
   text: {
     color: "grey",
+    fontWeight: "bold",
   },
 });

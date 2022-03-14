@@ -9,8 +9,6 @@ import HomeScreen from "../screens/HomeScreen";
 import DetailedViewScreen from "../screens/DetailedViewScreen";
 import SearchScreen from "../screens/SearchScreen";
 import SavedScreen from "../screens/SavedScreen";
-import AllMoviesListScreen from "../screens/AllMoviesListScreen";
-import WatchListScreen from "../screens/WatchListScreen";
 import NotificationScreen from "../screens/NotificationScreen";
 import DashBoardScreen from "../screens/DashBoardScreen";
 
