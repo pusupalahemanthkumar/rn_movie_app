@@ -7,15 +7,37 @@ import {
 } from "react-native";
 import React, { useState, useEffect } from "react";
 import HeaderTop from "../components/HeaderTop";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import WatchListSummary from "../components/WatchListComponents/WatchListSummary";
 import WatchList from "../components/WatchListComponents/WatchList";
+import { toogleWatchListStatusAsync } from "../app/reducersAndActions/moviesReducer";
 
 const DashBoardScreen = () => {
-  const moviesList = useSelector((state) => state.movies.moviesList);
+  const allWatchList = useSelector((state) => state.movies.watchList);
+  const watchedList = allWatchList.filter((item) => item.status === "Watched");
+  const PendingList = allWatchList.filter((item) => item.status === "Pending");
+
+  const [list, setList] = useState(allWatchList);
+
   const [activeLink, setActiveLink] = useState("All");
   const navClickHandler = (value) => {
     setActiveLink(value);
+    if (value === "All") {
+      setList(allWatchList);
+    } else if (value == "Pending") {
+      setList(PendingList);
+    } else {
+      setList(watchedList);
+    }
+  };
+  const dispatch = useDispatch();
+  const toogleStatusHandler = (id, status) => {
+    console.log(id, status);
+    if (status === "Pending") {
+      dispatch(toogleWatchListStatusAsync(id, "Watched"));
+    } else {
+      dispatch(toogleWatchListStatusAsync(id, "Pending"));
+    }
   };
   return (
     <>
@@ -77,7 +99,10 @@ const DashBoardScreen = () => {
             </Text>
           </TouchableOpacity>
         </View>
-        <WatchList data={moviesList} />
+        <WatchList
+          data={list}
+          toogleStatusHandler={toogleStatusHandler}
+        />
       </ScrollView>
     </>
   );

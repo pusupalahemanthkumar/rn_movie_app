@@ -9,7 +9,7 @@ import {
 } from "react-native";
 import { Table, Row, Rows } from "react-native-table-component";
 import CustomHeaderTitle from "../CustomHeaderTitle";
-import { Feather,Entypo,Ionicons } from "@expo/vector-icons";
+import { Feather, Entypo, Ionicons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import { useSelector } from "react-redux";
 import CastCardList from "./CastCardList";
@@ -17,7 +17,7 @@ import DescriptionContainer from "./DescriptionContainer";
 import CateoryList from "./CateoryList";
 import TopImageContainer from "./TopImageContainer";
 
-const Details = ({ data, toogleFavoriteHandler }) => {
+const Details = ({ data, toogleFavoriteHandler, addToWatchListHandler }) => {
   const navigation = useNavigation();
 
   const savedList = useSelector((state) => state.movies.savedMoviesList);
@@ -42,9 +42,9 @@ const Details = ({ data, toogleFavoriteHandler }) => {
     await toogleFavoriteHandler(data.id);
   };
 
-  const watchListHandler = async () =>{
-
-  }
+  const watchListHandler = async () => {
+    addToWatchListHandler(data.id, data.title);
+  };
 
   const goBackHandler = () => {
     navigation.goBack();
@@ -76,9 +76,8 @@ const Details = ({ data, toogleFavoriteHandler }) => {
         <CustomHeaderTitle title="Cast" moreText="See More >" />
         <CastCardList cast={data.cast} />
         <View style={styles.btnContainer}>
-          <Button onPress={watchListHandler} title="Add to Watchlist"/>
+          <Button onPress={watchListHandler} title="Add to Watchlist" />
         </View>
-
       </View>
     </ScrollView>
   );
@@ -117,9 +116,9 @@ const styles = StyleSheet.create({
     paddingLeft: 15,
     paddingRight: 15,
   },
-  btnContainer:{
+  btnContainer: {
     marginTop: 10,
-    alignItems:"center",
+    alignItems: "center",
   },
 });
 

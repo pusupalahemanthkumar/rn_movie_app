@@ -6,6 +6,7 @@ const initialState = {
   moviesList: data,
   filteredLanguage: "",
   savedMoviesList: [],
+  watchList: [],
 };
 
 export const getMoviesListAsync = () => {
@@ -17,8 +18,31 @@ export const getMoviesListAsync = () => {
 };
 export const toogleFavoriteAsync = (id) => {
   return async (dispatch, getState) => {
-    const response = data;
+    const response = id;
     dispatch(toogleFavorite(response));
+  };
+};
+
+export const addToWatchListAsync = (id, title) => {
+  return async (dispatch, getState) => {
+    const response = {
+      id: id,
+      title: title,
+      status: "Pending",
+    };
+    dispatch(addToWatchList(response));
+  };
+};
+
+export const toogleWatchListStatusAsync = (id, status) => {
+  return async (dispatch, getState) => {
+
+    const response = {
+      id: id,
+      status: status,
+    };
+    console.log(response);
+    dispatch(toogleWatchListStatus(response));
   };
 };
 
@@ -45,9 +69,26 @@ export const moviesSlice = createSlice({
         state.savedMoviesList = state.savedMoviesList.concat(movie);
       }
     },
+    addToWatchList: (state, action) => {
+      const oldwatchList = state.watchList;
+      state.watchList = [...oldwatchList, action.payload];
+    },
+    toogleWatchListStatus: (state, action) => {
+      const item = state.watchList.find((item) => item.id === action.payload.id);
+      item.status = action.payload.status;
+      const updatedwatchlist = state.watchList.filter(
+        (item) => item.id !== action.payload.id
+      );
+      state.watchList = [...updatedwatchlist, item];
+    },
   },
 });
 
-export const { getMoviesList, toogleFavorite } = moviesSlice.actions;
+export const {
+  getMoviesList,
+  toogleFavorite,
+  addToWatchList,
+  toogleWatchListStatus,
+} = moviesSlice.actions;
 
 export default moviesSlice.reducer;
