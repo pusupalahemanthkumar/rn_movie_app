@@ -1,5 +1,5 @@
 import "react-native-gesture-handler";
-import { StatusBar } from "expo-status-bar";
+import { StatusBar , useState} from "expo-status-bar";
 import { StyleSheet, Text, View } from "react-native";
 import MainNavigator from "./navigation/MainNavigator";
 import { createStore, combineReducers } from "redux";
@@ -14,6 +14,7 @@ import  {store} from "./app/store";
 // const store = createStore(rootReducer);
 
 export default function App() {
+
   return (
     <Provider store={store}>
       <MainNavigator />

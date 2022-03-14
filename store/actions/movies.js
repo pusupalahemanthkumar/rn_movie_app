@@ -4,6 +4,5 @@ export const toogleFavorite =(id)=>{
     return {
         type:TOGGLE_FAVORITE,
         movieId: id
-
     };
 }

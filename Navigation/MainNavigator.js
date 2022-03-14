@@ -12,6 +12,7 @@ import SavedScreen from "../screens/SavedScreen";
 import AllMoviesListScreen from "../screens/AllMoviesListScreen";
 import WatchListScreen from "../screens/WatchListScreen";
 import NotificationScreen from "../screens/NotificationScreen";
+import DashBoardScreen from "../screens/DashBoardScreen";
 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -40,7 +41,7 @@ const DrawerMoviesNav = () => {
       }}
     >
       <Drawer.Screen name="Trending" component={StackNavTrending} />
-      <Drawer.Screen name="WatchList" component={WatchListScreen} />
+      <Drawer.Screen name="WatchList" component={DashBoardScreen} />
     </Drawer.Navigator>
   );
 };

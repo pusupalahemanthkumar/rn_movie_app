@@ -7,6 +7,7 @@ import MovieNameList from "../components/MoviesList/MovieNameList";
 import movies from '../assets/data/movies-data'
 
 
+
 const ViewCount = () => {
   return (
     <View style={styles.viewCountContainer}>
