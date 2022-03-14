@@ -3,7 +3,7 @@ import React from "react";
 import { LinearGradient } from "expo-linear-gradient";
 
 const { width } = Dimensions.get("window");
-const WatchListSummary = ({ total, pending }) => {
+const WatchListSummary = ({ total, pending, watchList }) => {
   return (
     <>
       <View style={styles.summaryTop}>
@@ -21,7 +21,7 @@ const WatchListSummary = ({ total, pending }) => {
           colors={["#FF9997", "#FF8986", "#FF7974", "#FF6962"]}
           style={[styles.box, styles.totalContainer]}
         >
-          <Text style={styles.lText}>{total}</Text>
+          <Text style={styles.lText}>{watchList}</Text>
           <Text style={styles.smText}>Watched</Text>
         </LinearGradient>
         <LinearGradient

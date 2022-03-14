@@ -5,7 +5,7 @@ import {
   TouchableOpacity,
   ScrollView,
 } from "react-native";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import HeaderTop from "../components/HeaderTop";
 import { useSelector } from "react-redux";
 import WatchListSummary from "../components/WatchListComponents/WatchListSummary";
@@ -13,23 +13,69 @@ import WatchList from "../components/WatchListComponents/WatchList";
 
 const DashBoardScreen = () => {
   const moviesList = useSelector((state) => state.movies.moviesList);
+  const [activeLink, setActiveLink] = useState("All");
+  const navClickHandler = (value) => {
+    setActiveLink(value);
+  };
   return (
     <>
       <HeaderTop moviesScreen={true} />
       <ScrollView>
-        <WatchListSummary total={20} pending={10} />
+        <WatchListSummary total={22} pending={10} watchList={12} />
         <View style={styles.internalNavContainer}>
-            <TouchableOpacity style={[styles.navBtn]} onPress={() => {}}>
-              <Text style={[styles.text]}>All</Text>
-            </TouchableOpacity>
-          
-            <TouchableOpacity style={[styles.navBtn, styles.active]} onPress={() => {}}>
-              <Text style={[styles.text, styles.activeText]}>Watched</Text>
-            </TouchableOpacity>
-        
-            <TouchableOpacity style={[styles.navBtn]} onPress={() => {}}>
-              <Text style={[styles.text]}>Pending</Text>
-            </TouchableOpacity>
+          <TouchableOpacity
+            style={[styles.navBtn, activeLink === "All" ? styles.active : null]}
+            onPress={() => {
+              navClickHandler("All");
+            }}
+          >
+            <Text
+              style={[
+                styles.text,
+                activeLink === "All" ? styles.activeText : null,
+              ]}
+            >
+              All
+            </Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            style={[
+              styles.navBtn,
+              activeLink === "Watched" ? styles.active : null,
+            ]}
+            onPress={() => {
+              navClickHandler("Watched");
+            }}
+          >
+            <Text
+              style={[
+                styles.text,
+                activeLink === "Watched" ? styles.activeText : null,
+              ]}
+            >
+              Watched
+            </Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            style={[
+              styles.navBtn,
+              activeLink === "Pending" ? styles.active : null,
+            ]}
+            onPress={() => {
+              navClickHandler("Pending");
+            }}
+          >
+            <Text
+              style={[
+                styles.text,
+                activeLink === "Pending" ? styles.activeText : null,
+              ]}
+            >
+              Pending
+            </Text>
+          </TouchableOpacity>
         </View>
         <WatchList data={moviesList} />
       </ScrollView>
@@ -57,10 +103,9 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     borderRadius: 10,
-    
   },
   active: {
-    backgroundColor: "grey"
+    backgroundColor: "grey",
     // "black"
     // "#0080BF",
   },
