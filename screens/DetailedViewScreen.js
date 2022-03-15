@@ -21,12 +21,19 @@ const DetailedViewScreen = () => {
     },
     [dispatch, data]
   );
-  const addToWatchListHandler = (id, title) => {
-    dispatch(addToWatchListAsync(id, title));
-  };
+  const addToWatchListHandler = useCallback(
+    (id, title) => {
+      dispatch(addToWatchListAsync(id, title));
+    },
+    [dispatch, data]
+  );
   return (
     <>
-      <Details data={data} toogleFavoriteHandler={toogleFavoriteHandler}  addToWatchListHandler={ addToWatchListHandler} />
+      <Details
+        data={data}
+        toogleFavoriteHandler={toogleFavoriteHandler}
+        addToWatchListHandler={addToWatchListHandler}
+      />
       <StatusBar />
     </>
   );

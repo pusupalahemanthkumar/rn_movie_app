@@ -36,7 +36,6 @@ export const addToWatchListAsync = (id, title) => {
 
 export const toogleWatchListStatusAsync = (id, status) => {
   return async (dispatch, getState) => {
-
     const response = {
       id: id,
       status: status,
@@ -74,13 +73,11 @@ export const moviesSlice = createSlice({
       state.watchList = [...oldwatchList, action.payload];
     },
     toogleWatchListStatus: (state, action) => {
-      const item = state.watchList.find((item) => item.id === action.payload.id);
-      item.status = action.payload.status;
-      const updatedwatchlist = state.watchList.filter(
-        (item) => item.id !== action.payload.id
+      const i = state.watchList.findIndex(
+        (item) => item.id === action.payload.id
       );
-      state.watchList = [...updatedwatchlist, item];
-    },
+      state.watchList[i].status=action.payload.status;
+      }
   },
 });
 
@@ -90,5 +87,20 @@ export const {
   addToWatchList,
   toogleWatchListStatus,
 } = moviesSlice.actions;
+
+export const allWatchList = (state) => {
+  return  state.movies.watchList;
+}
+
+export const pendingwatchList = (state) => {
+  return state.movies.watchList.filter((item) => {
+    return item.status === "Pending";
+  });
+};
+export const completedList = (state) => {
+  return state.movies.watchList.filter((item) => {
+    return item.status === "Watched";
+  });
+};
 
 export default moviesSlice.reducer;

@@ -10,33 +10,47 @@ import HeaderTop from "../components/HeaderTop";
 import { useSelector, useDispatch } from "react-redux";
 import WatchListSummary from "../components/WatchListComponents/WatchListSummary";
 import WatchList from "../components/WatchListComponents/WatchList";
-import { toogleWatchListStatusAsync } from "../app/reducersAndActions/moviesReducer";
+import {
+  toogleWatchListStatusAsync,
+  allWatchList,
+  pendingwatchList,
+  completedList,
+} from "../app/reducersAndActions/moviesReducer";
 
 const DashBoardScreen = () => {
-  const allWatchList = useSelector((state) => state.movies.watchList);
-  const watchedList = allWatchList.filter((item) => item.status === "Watched");
-  const PendingList = allWatchList.filter((item) => item.status === "Pending");
+  const dispatch = useDispatch();
 
-  const [list, setList] = useState(allWatchList);
+  const totalList = useSelector(allWatchList);
+  const pendingList = useSelector(pendingwatchList);
+  const watchedList = useSelector(completedList);
 
   const [activeLink, setActiveLink] = useState("All");
+  const [list, setList] = useState(totalList);
+
   const navClickHandler = (value) => {
-    setActiveLink(value);
     if (value === "All") {
-      setList(allWatchList);
-    } else if (value == "Pending") {
-      setList(PendingList);
+      setList(totalList);
+    } else if (value === "Pending") {
+      setList(pendingList);
     } else {
       setList(watchedList);
     }
+    setActiveLink(value);
   };
-  const dispatch = useDispatch();
+
   const toogleStatusHandler = (id, status) => {
     console.log(id, status);
     if (status === "Pending") {
       dispatch(toogleWatchListStatusAsync(id, "Watched"));
     } else {
       dispatch(toogleWatchListStatusAsync(id, "Pending"));
+    }
+    if (activeLink === "All") {
+      setList(totalList);
+    } else if (activeLink === "Pending") {
+      setList(pendingList);
+    } else {
+      setList(watchedList);
     }
   };
   return (
@@ -99,10 +113,7 @@ const DashBoardScreen = () => {
             </Text>
           </TouchableOpacity>
         </View>
-        <WatchList
-          data={list}
-          toogleStatusHandler={toogleStatusHandler}
-        />
+        <WatchList data={list} toogleStatusHandler={toogleStatusHandler} />
       </ScrollView>
     </>
   );
