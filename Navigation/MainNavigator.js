@@ -14,7 +14,7 @@ import DashBoardScreen from "../screens/DashBoardScreen";
 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
-const Tab = createBottomTabNavigator();
+// const Tab = createBottomTabNavigator();
 
 // Trending Stack Nav
 const StackNavTrending = () => {
@@ -73,7 +73,7 @@ const StackNavSaved = () => {
 };
 
 // Tab Nav
-const MainTabNav = () => {
+const MainTabNav = (Tab) => {
   return (
     <Tab.Navigator
       screenOptions={{
@@ -122,13 +122,6 @@ const MainTabNav = () => {
   );
 };
 
-// Main Nav
-const MainNavigator = () => {
-  return (
-    <NavigationContainer>
-      <MainTabNav />
-    </NavigationContainer>
-  );
-};
 
-export default MainNavigator;
+
+export default MainTabNav;
