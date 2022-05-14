@@ -29,7 +29,7 @@ export const authenticateAsync =(email,password)=>{
               console.log("login success");
 
         }catch(err){
-            // console.log(err);
+            console.log(err);
         }
         
     }

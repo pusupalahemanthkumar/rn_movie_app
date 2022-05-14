@@ -13,6 +13,7 @@ import { useNavigation } from "@react-navigation/native";
 
 const MovieCard = ({ item, viewMoreScreen }) => {
   const navigation = useNavigation();
+  // console.log(item.)
   return (
     <TouchableWithoutFeedback
       onPress={() => {

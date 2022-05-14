@@ -1,9 +1,11 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import axios from "axios";
 
 import data from "../../assets/data/movies-data";
 
 const initialState = {
-  moviesList: data,
+  nowPlaying:[],
+  moviesList: [],
   filteredLanguage: "",
   savedMoviesList: [],
   watchList: [],
@@ -11,9 +13,10 @@ const initialState = {
 
 export const getMoviesListAsync = () => {
   return async (dispatch, getState) => {
-    const response = data;
+    const {data} = await axios.get("https://api.themoviedb.org/3/movie/popular?api_key=b61c09d05e9af3fb967c0f817acd284d");
     console.log("movies Data");
-    dispatch(getMoviesList(response));
+    console.log(data.results);
+    dispatch(getMoviesList(data.results));
   };
 };
 export const toogleFavoriteAsync = (id) => {

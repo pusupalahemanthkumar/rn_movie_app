@@ -23,7 +23,7 @@ const MovieCard = ({ item }) => {
         <View style={styles.cardImageContainer}>
           <Image
             source={{
-              uri: item.imageUrl,
+              uri: `https://image.tmdb.org/t/p/w500${item.poster_path}`,
             }}
             resizeMode="stretch"
             style={styles.image}
